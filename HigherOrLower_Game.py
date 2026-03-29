@@ -80,7 +80,7 @@ def vs():
 code_running = True
 PLAYER_SCORE = 0
 #------------------
-def result_check(result, oldChar2_becomeChar1):
+def result_check(result, old_char2_become_char1):
     global PLAYER_SCORE
     global code_running
 
@@ -89,7 +89,7 @@ def result_check(result, oldChar2_becomeChar1):
         #now...re-run the code
         print("\n" * 100)  # NEW GAME logoSPACESR
         print(f"YOU'RE RIGHT! you get a point :), your current score: {PLAYER_SCORE}")
-        start_game(True, oldChar2_becomeChar1)
+        start_game(True, old_char2_become_char1)
     else:
         print("\n")
         print(f"sorry, you got it wrong :(, you reached a score of: {PLAYER_SCORE}")
@@ -105,7 +105,7 @@ def result_check(result, oldChar2_becomeChar1):
 
 
 #=======================
-def compair(fact, guess, oldChar2_becomeChar1):
+def compair(fact, guess, old_char2_become_char1):
     player_guess = guess
     fact = fact
     #---------Chars:
@@ -126,13 +126,13 @@ def compair(fact, guess, oldChar2_becomeChar1):
         result = "WRONG"
 
 
-    result_check(result, oldChar2_becomeChar1)
+    result_check(result, old_char2_become_char1)
 
 
 
 
 #=======================
-def start_game(IsMovingOn, saved_character2):
+def start_game(is_movingon, saved_character2):
     global PLAYER_SCORE
     # __________TITLE
     logo()
@@ -145,17 +145,11 @@ def start_game(IsMovingOn, saved_character2):
     char1 = game_data.data[char_1_number]
     char2 = game_data.data[char_2_number]
     #
-    fact = ""
+    # fact = ""
     #__________
-    # IsMovingOn = bool (just to check if the player got it right, in that case,
-    # you must turn Char1 into --------> the next Char2.
-    # USING Char_Numbers like:    char_1_number   &   char_2_number
-    # and saving them into a small list that can be sent around the other variables!!!
-    # which is:
-    oldChar2_becomeChar1 = "" #this is the empty value to store char <and a good re-set line of code>
-    oldChar2_becomeChar1 = char_2_number
+    old_char2_become_char1 = char_2_number
 
-    if IsMovingOn:
+    if is_movingon:
         char_1_number = saved_character2 #this will make char1 into char2 :)
         char1 = game_data.data[char_1_number]
 
@@ -193,14 +187,12 @@ def start_game(IsMovingOn, saved_character2):
     #__________TIME TO COMPAIR
     try:
         if player_guess == "a" or player_guess == "b":
-            compair( fact, player_guess, oldChar2_becomeChar1 )
+            compair( fact, player_guess, old_char2_become_char1 )
     except ValueError:
         print("<!>INPUT ERROR<!> please use only the letter [A] or [B]")
-        start_game(False, oldChar2_becomeChar1) #small-reset
+        start_game(False, old_char2_become_char1) #small-reset
     #just added a safety mechanism to reset the game, haha xD
     #WRITE A NOTE ABOUT THAT :)
-
-
 
 
 #____________________________________________________________________________________________________________
